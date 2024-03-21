@@ -1,0 +1,12 @@
+<mat-toolbar color="primary" class="mat-elevation-z8 " *ngIf="authService.authenticated | async">
+  <!--<span><mat-icon>theaters</mat-icon> logo</span>-->
+  <img class="content-image" src="assets/images/site logo2.png" alt="">
+  <div class="spacer"></div>
+
+  <a mat-button routerLink="user/home"><mat-icon>home</mat-icon>Acceuil</a>
+  <a mat-button routerLink="user/tickets"><mat-icon>theaters</mat-icon> Mes tickets</a>
+  <a mat-button routerLink="user/createEvent"><mat-icon>add_box</mat-icon>Créer événement</a>
+  <a mat-button routerLink="user/Event"><mat-icon>list</mat-icon>Mes evenements</a>
+  <a mat-raised-button color="accent" routerLink="user/connexion"
+    (click)="logout()"><mat-icon>exit_to_app</mat-icon>Déconnexion</a>
+</mat-toolbar>

@@ -1,0 +1,219 @@
+<body>
+  <div class="container ">
+    <form #eventForm="ngForm" class="form">
+      <h1 class="title mb-6">Création d'un événement</h1>
+
+      <!-- Nom de l'événement -->
+      <div class="form-group row">
+        <label for="name" class="col-sm-3 mb-2 col-form-label">Nom de l'événement</label>
+        <div class="col-sm-6">
+          <input type="text" ngModel name="name" class="form-control" required #inputName="ngModel" />
+        </div>
+        <div class="col-sm-3">
+          <span *ngIf="!inputName.value && inputName.touched" class="text-danger">
+            Nom requis.
+          </span>
+        </div>
+      </div>
+
+      <!-- Type de l'événement -->
+      <div class="form-group row">
+        <label for="type" class="col-sm-3  mb-2 col-form-label">Type de l'événement</label>
+        <div class="col-sm-6">
+          <input type="text" ngModel name="type" class="form-control" required #inputType="ngModel" />
+        </div>
+        <div class="col-sm-3">
+          <span *ngIf="!inputType.value && inputType.touched" class="text-danger">
+            Type requis.
+          </span>
+        </div>
+      </div>
+
+      <!-- Date de l'événement -->
+      <div class="form-group row">
+        <label for="date" class="col-sm-3 mb-2 col-form-label">Date de l'événement</label>
+        <div class="col-sm-6">
+          <input type="datetime-local" ngModel name="date" class="form-control" required #inputDate="ngModel" />
+        </div>
+        <div class="col-sm-3">
+          <span *ngIf="!inputDate.value && inputDate.touched" class="text-danger">
+            Date et heure requis.
+          </span>
+        </div>
+      </div>
+
+      <!-- Line-up de l'événement -->
+      <div class="form-group row">
+        <label for="lineUp" class="col-sm-3 mb-2 col-form-label">Line Up de l'événement</label>
+        <div class="col-sm-6">
+          <input type="text" ngModel name="lineUp" class="form-control" required #inputlineUp="ngModel" />
+        </div>
+        <div class="col-sm-3">
+          <span *ngIf="!inputlineUp.value && inputlineUp.touched" class="text-danger">
+            Line-up requis.
+          </span>
+        </div>
+      </div>
+
+      <!-- Adresse de l'événement -->
+      <div class="form-group row">
+        <label for="address" class="col-sm-3 mb-2 col-form-label">Adresse de l'événement</label>
+        <div class="col-sm-6">
+          <input type="text" ngModel name="address" class="form-control" required #inputAddress="ngModel" />
+        </div>
+        <div class="col-sm-3">
+          <span *ngIf="!inputAddress.value && inputAddress.touched" class="text-danger">
+            Adresse requise.
+          </span>
+        </div>
+      </div>
+
+      <!-- Capacité de l'événement -->
+      <div class="form-group row">
+        <label for="capacity" class="col-sm-3 mb-2 col-form-label">Capacité de l'événement</label>
+        <div class="col-sm-6">
+          <input type="number" ngModel name="capacity" class="form-control" required min="1" #inputCapacity="ngModel" />
+        </div>
+        <div class="col-sm-3">
+          <span *ngIf="!inputCapacity.value && inputCapacity.touched" class="text-danger">
+            Capacité requise.
+          </span>
+          <span *ngIf="inputCapacity.errors?.['min'] && (inputCapacity.dirty || inputCapacity.touched)"
+            class="text-danger">
+            La capacité doit étre strictement positive.
+          </span>
+        </div>
+      </div>
+
+      <!-- Controle d'âge -->
+      <div class="form-group row">
+        <label for="ageRules" class="col-sm-3 mb-2 col-form-label">Conditions de l'âge</label>
+        <div class="col-sm-6">
+          <input type="text" ngModel name="ageRules" class="form-control" required #inputAge="ngModel" />
+        </div>
+        <div class="col-sm-3">
+          <span *ngIf="!inputAge.value && inputAge.touched" class="text-danger">
+            Conditions d'âge requises.
+          </span>
+        </div>
+      </div>
+
+      <!-- Code vestimentaire -->
+      <div class="form-group row">
+        <label for="dressCode" class="col-sm-3 mb-2 col-form-label">Code vestimentaire</label>
+        <div class="col-sm-6">
+          <input type="text" ngModel name="dressCode" class="form-control" required #inputDress="ngModel" />
+        </div>
+        <div class="col-sm-3">
+          <span *ngIf="!inputDress.value && inputDress.touched" class="text-danger">
+            Code vestimentaire requis.
+          </span>
+        </div>
+      </div>
+
+      <!-- Autorisation d'alcool -->
+      <div class="form-group row align-items-center">
+        <label for="alcoholRules" class="col-sm-2 mb-2 col-form-label">
+          <h3>Autorisation d'alcool</h3>
+        </label>
+        <div class="col-sm-10">
+          <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="alcoholRules" ngModel name="alcoholRules">
+            <label class="custom-control-label" for="alcoholRules"></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prix de l'événement -->
+      <div class="form-group row">
+        <label for="ticketPrice" class="col-sm-3 mb-2 col-form-label">Prix du ticket</label>
+        <div class="col-sm-6">
+          <input type="number" ngModel name="ticketPrice" class="form-control" required min="1" #inputPrice="ngModel" />
+        </div>
+        <div class="col-sm-3">
+          <span *ngIf="!inputPrice.value && inputPrice.touched" class="text-danger">
+            Prix du ticket requis.
+          </span>
+          <span *ngIf="inputPrice.errors?.['min'] && (inputPrice.dirty || inputPrice.touched)" class="text-danger">
+            Le prix doit étre strictement positif.
+          </span>
+        </div>
+      </div>
+
+      <!-- Point de vente -->
+      <div class="form-group row">
+        <label for="sellPointName" class="col-sm-3 mb-2 col-form-label">Nom du point de vente</label>
+        <div class="col-sm-6">
+          <input type="text" ngModel name="sellPointName" class="form-control" required #inputSellPointName="ngModel" />
+        </div>
+        <div class="col-sm-3">
+          <span *ngIf="!inputSellPointName.value && inputSellPointName.touched" class="text-danger">
+            Nom du point de vente requis.
+          </span>
+        </div>
+      </div>
+
+      <!-- N° de tel du point de vente-->
+      <div class="form-group row">
+        <label for="sellPointPhone" class="col-sm-3 mb-2 col-form-label">Numéro de téléphone du point de vente</label>
+        <div class="col-sm-6">
+          <input type="tel" minLength="8" maxlength="8" ngModel name="sellPointPhone" class="form-control" required
+            pattern="^\d{8}$" #inputSellPointPhone="ngModel" />
+        </div>
+        <div class="col-sm-3">
+          <span *ngIf="!inputSellPointPhone.value && inputSellPointPhone.touched" class="text-danger">
+            Numéro de téléphone du point de vente requis.
+          </span>
+          <span *ngIf="inputSellPointPhone.invalid && (inputSellPointPhone.dirty || inputSellPointPhone.touched)"
+            class="text-danger">
+            Le numéro de téléphone doit avoir 8 caractères.
+          </span>
+        </div>
+      </div>
+
+      <!-- Adresse du point de vente -->
+      <div class="form-group row">
+        <label for="sellPointAddress" class="col-sm-3 mb-2 col-form-label">Adresse du point de vente</label>
+        <div class="col-sm-6">
+          <input type="text" ngModel name="sellPointAddress" class="form-control" required
+            #inputSellPointAddress="ngModel" />
+        </div>
+        <div class="col-sm-3">
+          <span *ngIf="!inputSellPointAddress.value && inputSellPointAddress.touched" class="text-danger">
+            Adresse du point de vente requise.
+          </span>
+        </div>
+      </div>
+
+      <!-- Affiche de l'événement -->
+      <div class="form-group row">
+        <div class="col-sm-3">
+          <h3 class="me-2">Affiche de l'événement </h3>
+        </div>
+        <div class="col-sm-6">
+          <input type="file" (change)="handleFileInput($event)"
+            class="form-control" id="image" name="file" />
+        </div>
+        <div class="center-spinner col-sm-2">
+          <div class=" spinner-border text-primary" *ngIf="spinner == 1" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div class="col-sm-1" *ngIf="spinner == 2"><mat-icon class="check">done_outline</mat-icon></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h3 class="text-danger">Veuillez vérifier attentivement les coordonnées de votre événement. Une fois que
+            l'événement est accepté par l'administration, vous ne pourrez ni le modifier ni le supprimer.</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col" style="text-align: center;">
+          <button type="submit" [disabled]="!eventForm.valid" (click)="create(eventForm)">Créer l'événement</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</body>

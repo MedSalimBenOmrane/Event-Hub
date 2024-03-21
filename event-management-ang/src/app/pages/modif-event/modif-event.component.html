@@ -1,0 +1,118 @@
+<body>
+  <div class="container">
+    <form #eventForm="ngForm">
+      <h1 class="title mb-6">
+        Modification d'un événement
+      </h1>
+      <div class="row mb-2 ">
+        <div class="col -6">
+          <!-- Nom de l'événement -->
+          <input type="text" [(ngModel)]="event.name" name="name" class="form-control" required
+            placeholder="Nom de l'événement" />
+        </div>
+        <div class="col -6">
+          <!-- Type de l'événement -->
+          <input type="text" [(ngModel)]="event.type" name="type" class="form-control" required
+            placeholder="Type de l'événement" />
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col -6">
+          <!-- Date de l'événement -->
+          <input type="datetime-local" [(ngModel)]="event.eventDate" name="date" class="form-control" required
+            placeholder="Date de l'événement" />
+        </div>
+        <div class="col -6">
+          <!-- Line-up de l'événement -->
+          <input type="text" [(ngModel)]="event.lineUp" name="lineUp" class="form-control"
+            placeholder="Line-up de l'événement" />
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col -6">
+          <!-- Adresse de l'événement -->
+          <input type="text" [(ngModel)]="event.address" name="address" class="form-control" required
+            placeholder="Adresse de l'événement" />
+        </div>
+        <div class="col -6">
+          <!-- Capacité de l'événement -->
+          <input type="number" [(ngModel)]="event.capacity" name="capacity" class="form-control" required
+            placeholder="Capacité de l'événement" />
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-6">
+          <!-- Âge minimal -->
+          <input type="text" [(ngModel)]="event.ageRules" name="ageRules" class="form-control" required
+            placeholder="Âge minimal" />
+        </div>
+        <div class="col-6">
+          <!-- Autorisation d'alcool -->
+          <div class="form-check form-check-inline">
+            <label class="form-check-label" for="alcoholRules">
+              <h3>Autorisation d'alcool</h3>
+            </label>
+            <input type="checkbox" [(ngModel)]="event.alcoholRules" name="alcoholRules" id="alcoholRules"
+              class="form-check-input" />
+          </div>
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-6">
+          <!-- Code vestimentaire -->
+          <input type="text" [(ngModel)]="event.dressCode" name="dressCode" class="form-control"
+            placeholder="Code vestimentaire" />
+        </div>
+        <div class="col-6">
+          <!-- Prix de l'événement -->
+          <input type="number" [(ngModel)]="event.ticketPrice" name="ticketPrice" class="form-control" required
+            placeholder="Prix de l'événement" />
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-6">
+          <!-- Points de vente -->
+          <input type="text" name="sellPointName" class="form-control" placeholder="Point de vente" />
+        </div>
+        <div class="col-6">
+          <!-- Points de vente -->
+          <input type="number" [(ngModel)]="sellPointadress" name="sellPointPhone" class="form-control"
+            placeholder="N° de tel du point de vente" />
+        </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-6">
+          <!-- Points de vente -->
+          <input type="text" ngModel name="sellPointAddress" class="form-control"
+            placeholder="Adresse du point de vente" />
+        </div>
+        <div class="col-md-6 d-flex align-items-center">
+          <!-- Affiche de l'événement -->
+          <div class="row">
+            <div class="col-6">
+              <h3 class="me-2">Affiche de l'événement : </h3>
+            </div>
+            <div class="col-5">
+              <input type="file" (change)="handleFileInput($event)" (change)="handleImageInput($event, eventForm)"
+                class="form-control" id="image" name="image" />
+            </div>
+            <div class="spinner-border text-primary col-1" *ngIf="spinner==1" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+            <div class="col-1" *ngIf="spinner==2">done</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h3 class="text-danger"> Veuillez vérifier attentivement les coordonnées de votre événement. Une fois que
+            l'événement est accepté par l'administration, vous ne pourrez ni le modifier ni le supprimer.</h3>
+        </div>
+        <div class="col">
+          <button type="submit" (click)="update( eventForm)">Modification d'événement</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>

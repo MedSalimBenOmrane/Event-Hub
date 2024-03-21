@@ -1,0 +1,27 @@
+<body>
+  <div class="container login-form">
+    <form #signinForm="ngForm">
+      <fieldset>
+        <legend>Panneau de l'administrateur</legend>
+        <div class="mb-3">
+          <input type="email" id="email" ngModel name="email2" class="form-control" email required
+            #inputEmail2="ngModel" placeholder="E-mail" />
+          <span *ngIf="inputEmail2.errors?.['required'] && inputEmail2.touched" class="text-danger">L'E-mail est
+            requis.</span>
+          <span *ngIf="inputEmail2.errors?.['email'] && inputEmail2.touched" class="text-danger">L'E-mail n'est pas
+            valide.</span>
+        </div>
+        <div class="mb-3">
+          <input required minlength="4" type="password" id="password" ngModel name="password" class="form-control"
+            #inputPassword2="ngModel" placeholder="Mot de passe" />
+          <span *ngIf="inputPassword2.errors?.['required'] && inputPassword2.touched" class="text-danger">Le mot de
+            passe
+            est requis.</span>
+          <span *ngIf="inputPassword2.errors?.['minlength'] && inputPassword2.touched" class="text-danger">Le mot de
+            passe doit contenir au moins 4 caractères.</span>
+        </div>
+        <button (click)="login(inputEmail2.value, inputPassword2.value)">Se connecter</button>
+      </fieldset>
+    </form>
+  </div>
+</body>

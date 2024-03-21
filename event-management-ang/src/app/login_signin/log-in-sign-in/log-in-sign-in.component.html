@@ -1,0 +1,107 @@
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+  <div class="container" id="container" [ngClass]="{ 'active': isActive }">
+    <div class="form-container sign-up">
+      <form #loginForm="ngForm">
+        <h1>Inscription</h1>
+
+        <!-- E-mail -->
+        <input type="email" id="email" ngModel name="email" class="form-control" email required #inputEmail="ngModel"
+          placeholder="E-mail" />
+        <span *ngIf="inputEmail.errors?.['required'] && inputEmail.touched" class="text-danger">L'E-mail est
+          requis.</span>
+        <span *ngIf="inputEmail.errors?.['email'] && inputEmail.touched" class="text-danger">L'E-mail n'est pas
+          valide.</span>
+
+        <!-- Prénom -->
+        <input type="text" ngModel name="firstname" class="form-control" required #inputFirstname="ngModel"
+          placeholder="Prénom" />
+        <span *ngIf="inputFirstname.errors?.['required'] && inputFirstname.touched" class="text-danger">Le prénom est
+          requis.</span>
+
+        <!-- Nom -->
+        <input type="text" ngModel name="name" class="form-control" required #inputName="ngModel" placeholder="Nom" />
+        <span *ngIf="inputName.errors?.['required'] && inputName.touched" class="text-danger">Le nom est requis.</span>
+
+        <!-- Numéro de téléphone -->
+        <input type="tel" ngModel name="phone" class="form-control" required #inputPhone="ngModel"
+          placeholder="Numero de téléphone (8 caractères)" minlength="8" maxlength="8" />
+        <span *ngIf="!inputPhone.value && inputPhone.touched" class="text-danger">Le numéro de téléphone est
+          requis.</span>
+        <span *ngIf="inputPhone.errors?.['minlength'] && inputPhone.touched" class="text-danger">Le numéro de
+          téléphone doit être
+          composé de 8 caractères.</span>
+
+        <!-- CIN -->
+        <input type="number" ngModel name="cin" class="form-control" required #inputCin="ngModel" placeholder="CIN" />
+        <span *ngIf="inputCin.errors?.['required'] && inputCin.touched" class="text-danger">Le CIN est requis.</span>
+        <span *ngIf="isCinInvalid(inputCin.value) && inputCin.touched" class="text-danger">Le CIN doit être composé de 8
+          chiffres.</span>
+
+
+        <!-- Mot de passe -->
+        <input required minlength="4" type="password" id="password" ngModel name="password" class="form-control"
+          #inputPassword="ngModel" placeholder="Mot de passe" />
+        <span *ngIf="inputPassword.errors?.['required'] && inputPassword.touched" class="text-danger">Le mot de passe
+          est requis.</span>
+        <span *ngIf="inputPassword.errors?.['minlength'] && inputPassword.touched" class="text-danger">Le mot de passe
+          doit contenir au moins 4 caractères.</span>
+
+        <button type="submit" (click)="signUp(loginForm)">S'inscrire</button>
+      </form>
+    </div>
+
+    <div class="form-container sign-in">
+      <form #signinForm="ngForm">
+        <h1>Connexion</h1>
+        <div class="social-icons">
+          <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+          <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+          <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+        </div>
+        <span></span>
+
+        <!-- E-mail -->
+        <input type="email" id="email" ngModel name="email2" class="form-control" email required #inputEmail2="ngModel"
+          placeholder="E-mail" />
+        <span *ngIf="inputEmail2.errors?.['required'] && inputEmail2.touched" class="text-danger">L'E-mail est
+          requis.</span>
+        <span *ngIf="inputEmail2.errors?.['email'] && inputEmail2.touched" class="text-danger">L'E-mail n'est pas
+          valide.</span>
+
+        <!-- Mot de passe -->
+        <input required minlength="4" type="password" id="password" ngModel name="password" class="form-control"
+          #inputPassword2="ngModel" placeholder="Mot de passe" />
+        <span *ngIf="inputPassword2.errors?.['required'] && inputPassword2.touched" class="text-danger">Le mot de passe
+          est requis.</span>
+        <span *ngIf="inputPassword2.errors?.['minlength'] && inputPassword2.touched" class="text-danger">Le mot de passe
+          doit contenir au moins 4 caractères.</span>
+
+        <a href="#">mot de passe oublier ?</a>
+        <button (click)="login(inputEmail2.value, inputPassword2.value)">Se connecter</button>
+      </form>
+    </div>
+    <div class="toggle-container">
+      <div class="toggle">
+        <div class="toggle-panel toggle-left">
+          <h1>Bienvenue de retour !</h1>
+          <p>Entrez vos informations personnelles pour utiliser toutes les fonctionnalités du notre site.</p>
+          <button class="hidden" (click)="toggleLogin()">Se connecter</button>
+        </div>
+        <div class="toggle-panel toggle-right">
+          <h1>Hello, Friend!</h1>
+          <p>Nous avons facilité l'achat de vos billets en seulement deux clics</p>
+          <button class="hidden" (click)="toggleLogin()">S' inscrire</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand" href="#">Admin</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+
+        <button class="btn" *ngIf="isLoggedIn">
+          <a class="nav-link" routerLink="/">Evénements</a>
+        </button>
+        <button class="btn" *ngIf="isLoggedIn">
+          <a class="nav-link" routerLink="/creators">Créateurs</a>
+        </button>
+        <button class="btn" *ngIf="isLoggedIn">
+          <a class="nav-link" routerLink="/sellpoints">Points de ventes</a>
+        </button>
+        <li class="btn" *ngIf="isLoggedIn">
+          <button class="btn btn-danger " (click)="logout()">Logout</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

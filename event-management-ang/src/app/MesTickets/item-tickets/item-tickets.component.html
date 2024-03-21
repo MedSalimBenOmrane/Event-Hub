@@ -1,0 +1,32 @@
+<li class="container">
+  <div class="row">
+    <div class="col-1 mt-2 mb-2">
+      <img src="http://localhost:3000/image/{{ticket.event.image.id}}" width="60px" height="80px">
+    </div>
+
+    <div class="col-2">
+      <h2> {{ticket.event.name|titlecase}} </h2>
+    </div>
+
+    <div class="col-3">
+      <h2>{{ticket.event.address}}</h2>
+    </div>
+
+    <div class="col-2">
+      <h2>{{ticket.event.eventDate | date:'dd/MM/yyyy HH:mm' }}</h2>
+    </div>
+
+    <div class="col-2">
+      <h2>{{ticket.status}}</h2>
+    </div>
+
+    <div class="col-1">
+      <h2>{{ticket.id}}</h2>
+    </div>
+
+    <div class="col-1">
+      <h2>{{ticket.event.ticketPrice}}dt</h2>
+    </div>
+
+  </div>
+</li>

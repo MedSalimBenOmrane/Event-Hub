@@ -1,0 +1,17 @@
+<div class="col-lg-12 col-sm-6 col-md-4">
+  <div class="row " *ngIf="events">
+
+    <div *ngIf="loading" class="center-spinner">
+      <div class="spinner-border text-primary col-1" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-sm-6 col-md-3" *ngFor="let event of events">
+      <div class="affiche" style="display: flex;">
+        <app-affiche2 [event]="event"></app-affiche2>
+      </div>
+    </div>
+    
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<body>
+  <div *ngIf="events && events.length > 0 && !loading; else noEventsMessage">
+    <div *ngFor="let event of events">
+      <div class="row pt-3">
+        <div class="col-12">
+          <app-detail-affiche [event]="event"></app-detail-affiche>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noEventsMessage>
+    <div class="container">
+      <div class="text-center">
+        <h1>Vous n'avez pas d'événements.</h1>
+        <img width="15%" height="15%" class=" align-self-center" src="assets/images/vide2.png" alt="">
+      </div>
+    </div>
+  </ng-template>
+</body>

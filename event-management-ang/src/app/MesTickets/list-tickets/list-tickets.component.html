@@ -1,0 +1,53 @@
+<body>
+  <div class="container">
+    <ng-container *ngIf="tickets.length > 0; else noEventsMessage">
+      <div id="container">
+        <div class="row">
+
+          <div class="col-1">
+            <h2>Affiche</h2>
+          </div>
+
+          <div class="col-2">
+            <h2>Nom</h2>
+          </div>
+
+          <div class="col-3">
+            <h2>Adresse</h2>
+          </div>
+
+          <div class="col-2">
+            <h2>Date</h2>
+          </div>
+
+          <div class="col-2">
+            <h2>Status</h2>
+          </div>
+
+          <div class="col-1">
+            <h2>N°</h2>
+          </div>
+
+          <div class="col-1">
+            <h2>Prix</h2>
+          </div>
+
+        </div>
+      </div>
+
+      <ol class="list-group">
+        <app-item-tickets *ngFor="let ticket of tickets" [ticket]="ticket"></app-item-tickets>
+      </ol>
+    </ng-container>
+
+    <ng-template #noEventsMessage>
+
+      <div class="text-center">
+
+        <h1>Vous n'avez pas des tickets.</h1>
+        <img width="15%" height="15%" class=" align-self-center" src="assets/images/vide.png" alt="">
+      </div>
+
+    </ng-template>
+  </div>
+</body>

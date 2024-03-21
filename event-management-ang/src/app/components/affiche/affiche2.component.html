@@ -1,0 +1,32 @@
+<div id="container">
+  <div class="content" *ngIf="event">
+    <div class="content-overlay"></div>
+    <img class="content-image" src="http://localhost:3000/image/{{event.image.id}}" alt="">
+    <div class="content-details fadeIn-top">
+
+      <div class="row">
+        <div class=" col-sm-8 ">
+          <h3>{{event.name}}</h3>
+        </div>
+        <div class="col-sm-4 ">
+          <h3> {{event.ticketPrice}} DT</h3>
+        </div>
+      </div>
+      <div class="row pb-2">
+        <p><mat-icon>location_on</mat-icon> {{event.address}}</p>
+      </div>
+      <div class="row pb-2">
+        <p><mat-icon>date_range</mat-icon> {{event.eventDate | date:'dd/MM/yyyy HH:mm' }}</p>
+      </div>
+      <div class="row pb-2">
+        <button class="btn btn-primary" (click)="details()" [hidden]="!showDetailsButton">Plus de details</button>
+      </div>
+
+      <div *ngIf="event?.capacity == 0">
+        <div class="row">
+          <h1 class="text-danger"> SOLD OUT !</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

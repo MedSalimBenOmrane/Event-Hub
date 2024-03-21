@@ -1,0 +1,65 @@
+<h1>Gestion des événements</h1>
+<hr>
+<table class="table">
+  <thead>
+    <tr class="table-primary">
+      <th scope="col">#</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Type</th>
+      <th scope="col">Addresse</th>
+      <th scope="col">Règles</th>
+      <th scope="col">Capacité</th>
+      <th scope="col">Prix</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngIf="events.length === 0 && !loading">
+      <td colspan="7" style="text-align: center;">Pas d'événements trouvés!</td>
+    </tr>
+
+    <tr *ngIf="loading">
+      <td colspan="7" style="text-align: center;">
+        <div class="spinner-border text-primary col-1" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </td>
+    </tr>
+
+    <tr *ngIf="error">
+      <td colspan="7" style="text-align: center;">{{error}}</td>
+    </tr>
+
+    <tr *ngFor="let event of events">
+      <th scope="row">{{event.id}}</th>
+      <td>
+        <span style="font-size: 20px;">
+          {{event.name}}
+        </span>
+
+
+      </td>
+      <td>{{event.type}}</td>
+      <td>{{event.address}}</td>
+      <td>
+        <ng-icon name="bootstrapCupStraw" size="20"></ng-icon>
+        {{event.alcoholRules}}
+        <br>
+        <ng-icon name="bootstrapPersonFillSlash" size="20"></ng-icon>
+        {{event.ageRules}}
+        <br>
+        <ng-icon name="bootstrapWatch" size="20"></ng-icon>
+        {{event.dressCode}}
+      </td>
+      <td>{{event.capacity}}</td>
+      <td>{{event.ticketPrice}}</td>
+      <td *ngIf="event.status == 'En attente'">
+        <button [disabled]="actionLoading" class="btn btn-success" style="margin-right: 10px;"
+          (click)="confirmEvent(event.id)">Accept</button>
+        <button class="btn btn-danger" (click)="rejectEvent(event.id)" [disabled]="actionLoading">Reject</button>
+      </td>
+
+    </tr>
+  </tbody>
+</table>

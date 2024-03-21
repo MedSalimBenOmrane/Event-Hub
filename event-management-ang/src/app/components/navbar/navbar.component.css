@@ -1,0 +1,11 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+#navbar {
+  position: fixed;
+}
+
+.content-image {
+  width: 4%;
+}

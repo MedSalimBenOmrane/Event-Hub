@@ -1,0 +1,22 @@
+.login-form {
+    margin-top: 100px;
+    width: 500px;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    padding-right: 20px;
+    padding-left: 20px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+  background-color: white;
+
+}
+
+body {
+  background-color: #c9d6ff;
+  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  height: auto;
+}

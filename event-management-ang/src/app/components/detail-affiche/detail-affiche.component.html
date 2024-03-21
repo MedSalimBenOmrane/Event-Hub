@@ -1,0 +1,47 @@
+<div class="container" *ngIf="!deleted">
+  <div class="row">
+    <div class="col-3 ">
+      <app-affiche2 [event]="event" [showDetailsButton]="false"></app-affiche2>
+    </div>
+
+    <div class="col-sm-5 mt-5 ">
+      <h1 class="">Nom d'événement : {{event.name}}</h1>
+      <br>
+      <h3><mat-icon></mat-icon> Type de l'événement :{{event.type}}</h3>
+      <h3><mat-icon>music_note</mat-icon> Line up :{{event.lineUp}}</h3>
+      <h3><mat-icon>group</mat-icon> Capacité : {{event.capacity}}</h3>
+      <h1> Régles: </h1>
+      <h3> <mat-icon>warning</mat-icon> Âge : {{event.ageRules}}</h3>
+      <h3><mat-icon>not_interested</mat-icon> Alcool : {{event.alcoholRules}}</h3>
+      <h3><mat-icon>wc</mat-icon> Code vestimentaire :{{event.dressCode}}</h3>
+    </div>
+
+    <div class="col-sm-4 mt-5">
+      <h1 class="text-primary"> {{event.ticketPrice}} DT</h1>
+      <h3><mat-icon>location_on</mat-icon> Adresse de l'événement :{{event.address}}</h3>
+      <h3><mat-icon>date_range</mat-icon> Date de l'événement :{{event.eventDate | date:'dd/MM/yyyy HH:mm' }}</h3>
+      <h3><mat-icon>store</mat-icon> Nom du point de vente :{{event.sellPoint?.name}}</h3>
+      <h3><mat-icon>location_on</mat-icon> Adresse du point de vente :{{event.sellPoint?.address}}</h3>
+      <h3><mat-icon>phone</mat-icon> Adresse de l'événement :{{event.sellPoint?.phoneNumber}}</h3>
+      <h1 [hidden]="!showStatus" [ngStyle]="{'color':bgcolor }"><mat-icon>info</mat-icon>Status : {{event.status}}</h1>
+      <h1 [hidden]="!showExpired" [ngStyle]="{'color':'red' }"><mat-icon>info</mat-icon>Expiré</h1>
+
+      <div *ngIf="event.status != 'Confirmé'">
+        <div class="row me-3">
+          <button class="btn btn-primary  mt-3 mb-3" (click)="modifier()"><mat-icon>update</mat-icon> Modifier</button>
+        </div>
+
+        <div class="row me-3">
+          <button class="btn btn-danger mb-3 " (click)="delete(event.id)"><mat-icon>delete_forever</mat-icon>
+            Supprimer</button>
+        </div>
+      </div>
+
+      <div *ngIf="event.capacity == 0">
+        <div class="row">
+          <img width="1%" height="1%" class=" align-self-center" src="assets/images/soldout.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

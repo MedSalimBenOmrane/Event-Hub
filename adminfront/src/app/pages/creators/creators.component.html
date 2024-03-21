@@ -1,0 +1,40 @@
+<div class="container" style="padding-top: 100px;">
+
+
+      <h1>Liste des créateurs</h1>
+      <hr>
+      <table class="table">
+        <thead>
+          <tr class="table-primary">
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Téléphone</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="creators.length === 0 && !loading">
+            <td colspan="4" style="text-align: center;">Aucun créateur</td>
+          </tr>
+
+          <tr *ngIf="loading">
+            <td colspan="4" style="text-align: center;">
+              <div class="spinner-border text-primary col-1" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </td>
+          </tr>
+
+          <tr *ngIf="error">
+            <td colspan="4" style="text-align: center;">{{error}}</td>
+          </tr>
+
+          <tr *ngFor="let creator of creators">
+            <th scope="row">{{creator.id}}</th>
+            <td>{{creator.name}} {{creator.firstname}}</td>
+            <td>{{creator.phoneNumber}}</td>
+            <td>{{creator.email}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
